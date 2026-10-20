@@ -72,12 +72,10 @@ describe('verify', () => {
       expect(challenges.forgedFeedbackChallenge.solved).to.equal(true)
     })
 
-    it('is solved when an unauthenticated user passes someones ID when writing feedback', () => {
+     it('is solved when an unauthenticated user passes someones ID when writing feedback', () => {
       req.body.UserId = 1
-           const sha256 = crypto.createHash('sha256')
-      sha256.update(buffer)
-      const md5Hash = sha256.digest('hex')
-      const md5FileName = 'dist/' + file + '.md5'
+
+      verify.forgedFeedbackChallenge()(req, res, next)
 
       expect(challenges.forgedFeedbackChallenge.solved).to.equal(true)
     })
